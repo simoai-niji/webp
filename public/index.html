@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Demo Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #videoPlayer {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .btn {
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        body {
+            background: linear-gradient(135deg, #1a202c, #2d3748);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-base-content">
+    <!-- Header -->
+    <header class="bg-base-300 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-center items-center">
+            <a href="/" class="text-3xl font-extrabold text-primary hover:text-primary-focus transition-colors">
+                CIPI DEMO
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-4 md:p-6">
+        <div class="card bg-base-200 shadow-2xl rounded-xl overflow-hidden w-full md:max-w-4xl mx-auto">
+            <div class="card-body">
+                <h2 class="card-title text-2xl font-bold text-accent">Featured Video</h2>
+                <div class="relative w-full" style="padding-top: 56.25%;">
+                    <iframe id="videoPlayer" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allowfullscreen></iframe>
+                    <div id="loadingSpinner" class="absolute inset-0 flex items-center justify-center bg-base-200 z-10" style="display: none;">
+                        <span class="loading loading-spinner loading-lg text-primary"></span>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-center mt-6 space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button id="prevBtn" class="btn btn-primary btn-sm sm:btn-md" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <button id="randomBtn" class="btn btn-secondary btn-sm sm:btn-md">
+                        <i class="fas fa-random mr-2"></i> Random
+                    </button>
+                    <button id="nextBtn" class="btn btn-primary btn-sm sm:btn-md" disabled>
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                <div class="card-actions justify-end mt-4">
+                    <a href="https://www.facebook.com/" target="_blank" class="btn btn-accent">
+                        <i class="fas fa-envelope mr-2"></i> Contact Seller
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="/script.js"></script>
+</body>
+</html>
