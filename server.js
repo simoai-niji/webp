@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 
-const MONGO_URI = 'mongodb+srv://siamthefox:s0i1a8m3@accdatasimo.e0c8m.mongodb.net/webdb?retryWrites=true&w=majority&appName=accdatasimo'; 
+const MONGO_URI = 'mongodb+srv://fozcipi:FoxAizen@fozcipix.jwrkv44.mongodb.net/webcipi?retryWrites=true&w=majority&appName=fozcipix'; 
 
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('✅ MongoDB Connected'))
@@ -129,15 +129,15 @@ const limiter = rateLimit({
         if (!existingBan) {
             await BannedIP.create({ ip });
             console.log(`IP ${ip} banned due to rate limiting.`);
-            res.status(429).send('Too many requests. Your IP is now banned.');
+            res.status(429).send('Too many requests. You are now banned');
         } else {
-            res.status(429).send('Too many requests. Your IP is banned.');
+            res.status(429).send('Too many requests.');
         }
     } catch (error) {
         
         if (error.code === 11000) {
              console.warn(`Rate limit handler: Tried to ban already banned IP ${ip} (likely race condition).`);
-             res.status(429).send('Too many requests. Your IP is banned.');
+             res.status(429).send('Too many requests [banned.]');
         } else {
             console.error(`Error banning IP ${ip} after rate limit:`, error);
             res.status(500).send('Server error during rate limit handling.');
@@ -165,7 +165,7 @@ const checkBannedIP = async (req, res, next) => {
       const banned = await BannedIP.findOne({ ip });
       if (banned) {
           console.log(`Blocked banned IP: ${ip}`);
-          return res.status(403).send('Access denied. Your IP is banned.');
+          return res.status(403).send('Access denied. reason: banned by spam detector.');
       }
       next();
   } catch (error) {
