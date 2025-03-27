@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 
-const MONGO_URI = 'mongodb+srv://fozcipi:FoxAizen@fozcipix.jwrkv44.mongodb.net/webcipi?retryWrites=true&w=majority&appName=fozcipix'; 
+const MONGO_URI = 'mongodb+srv://fozcipi:FoxAizen@fozcipix.jwrkv44.mongodb.net/webci?retryWrites=true&w=majority&appName=fozcipix'; 
 
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('✅ MongoDB Connected'))
