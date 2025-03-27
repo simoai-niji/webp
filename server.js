@@ -103,7 +103,7 @@ const getClientIP = (req) => {
 
 const limiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 26,
+  max: 22,
   keyGenerator: (req, res) => {
     const ip = getClientIP(req);
     if(!ip) {
@@ -129,9 +129,9 @@ const limiter = rateLimit({
         if (!existingBan) {
             await BannedIP.create({ ip });
             console.log(`IP ${ip} banned due to rate limiting.`);
-            res.status(429).send('Too many requests. You are now banned');
+            res.status(429).send('You are now banned');
         } else {
-            res.status(429).send('Too many requests.');
+            res.status(429).send('You are banned from this site');
         }
     } catch (error) {
         
